@@ -1,0 +1,37 @@
+body {
+  background-color: #333333;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.header {
+  font-family: 'Audiowide', cursive;
+  color: #ffffff;
+  font-size: 2.2rem;
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.url-input {
+  color: #ffffff !important;
+  background-color: transparent;
+  border: 3px #ffffff solid;
+}
+
+.btn-lg {
+  border-width: 3px;
+}
+
+.url-input:focus {
+  background-color: transparent;
+  border: 3px #ffffff solid;
+}
+
+input:focus,input:active,.btn {
+   outline: none !important;
+   box-shadow: none !important;
+}

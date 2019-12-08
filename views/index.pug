@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Snappy Short is a fast AF link shortener">
+  <title>Snappy Short</title>
+  <link rel="shortcut icon" type="image/png" href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/high-voltage-sign_26a1.png">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Audiowide|Share+Tech+Mono&display=swap" rel="stylesheet">
+  style
+    include css/main.css
+  script
+    include js/main.js
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="container center">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+        <h1 class="header display-4">Snappy Short ⚡</h1>
+          <div class="form-group mt-3">
+            <input id="url-input" name="url" type="url" class="form-control form-control-lg url-input" placeholder="Enter your long URL" oninput="checkURL()" required>
+          </div>
+          <button type="button" class="btn btn-outline-light btn-lg btn-block" onclick="createLink()" disabled>Short</button>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="shortModal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 id="message"></h5>
+          <button type="button" class="close" data-dismiss="modal">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="input-group">
+            <input type="text" id="short" class="form-control text-dark" readonly>
+            <div class="input-group-append">
+              <button type="button" class="btn btn-primary" onclick="copyKey()">Copy</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </body>
+</html>
