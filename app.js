@@ -29,7 +29,9 @@ connection.on('error', (err) => {
 app.set('view engine', 'pug');
 
 app.get('/', (req, res) => {
-  res.render('index');
+  connection.query(`SELECT * FROM links`, (error, results, fields) => {
+    res.render('index', {users: results.length});
+  });
 });
 
 app.get('/create', (req, res) => {

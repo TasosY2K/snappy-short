@@ -1,13 +1,24 @@
+let linkCount = 1;
+
 function createLink() {
   $.get(`/create?url=${$("#url-input").val()}`, (data, status) => {
+    linkCount++;
+    $('#linkCount > span').html(parseInt($('#linkCount > span').html()) + 1);
     $('#message').html(data.message);
-    $('#short').val(data.short);
+    $('.modal-body').append(`
+      <div class="input-group mt-1">
+        <input type="text" id="short${linkCount}" class="form-control text-dark" value="${data.short}"readonly>
+        <div class="input-group-append">
+          <button type="button" class="btn btn-primary" onclick="copyKey('short${linkCount}')">Copy</button>
+        </div>
+      </div>
+      `);
     $('#shortModal').modal()
   });
 }
 
-function copyKey() {
-  $('#short').select();
+function copyKey(element) {
+  $(`#${element}`).select();
   document.execCommand('copy');
 }
 
