@@ -10,7 +10,7 @@ Simple but fast and reliable 💨💪
 **Step 1**  
 Clone Snappy Short and install the dependencies
 ```sh
-$ git clone https://github.com/TasosY2K/SwearBot.git
+$ git clone https://github.com/TasosY2K/snappy-short/tree/SQLite.git
 $ npm install
 ```
 **Step 2**  
