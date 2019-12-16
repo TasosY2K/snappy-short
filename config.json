@@ -1,9 +1,3 @@
 {
-  "url" : "http://yoursite",
-  "database" : {
-    "host" : "host",
-    "user" : "user",
-    "password" : "password",
-    "database" : "database"
-  }
+  "url" : "http://yoursite"
 }

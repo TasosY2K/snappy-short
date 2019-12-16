@@ -1,7 +1,8 @@
-const mysql = require('mysql');
+const sqlite3 = require('sqlite3').verbose();
 const express = require('express');
 const bodyParser = require('body-parser');
 const moment = require('moment');
+const fs = require('fs');
 
 const config = require('./config.json');
 
@@ -14,22 +15,20 @@ function validateUrl(value) {
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
 
-const connection = mysql.createConnection(config.database);
+let db = new sqlite3.Database('./links.db');
 
-connection.on('error', (err) => {
-  if(err.code === 'PROTOCOL_CONNECTION_LOST') {
-		console.log("Lost database connection");
-		setInterval(() => {process.exit()}, 100);
-  } else {
-		console.log("Database error");
-	  setInterval(() => {process.exit()}, 100);
-	}
+db.serialize(() => {
+  db.each(fs.readFileSync('./db.sql', 'utf8'), (err, row) => {
+    if (err) {
+      console.error(err.message);
+    }
+  });
 });
 
 app.set('view engine', 'pug');
 
 app.get('/', (req, res) => {
-  connection.query(`SELECT * FROM links`, (error, results, fields) => {
+  db.all(`SELECT * FROM links`, (error, results) => {
     res.render('index', {users: results.length});
   });
 });
@@ -41,8 +40,8 @@ app.get('/create', (req, res) => {
     res.send('Invalid url provided')
   } else {
     let code = Math.random().toString(36).substring(7);
-    connection.query(`INSERT INTO links(date_created, og_url, short_url, code) VALUES ('${moment().format('YYYY-MM-DD HH:mm:ss Z')}', '${req.query.url}', '${config.url}/${code}', '${code}')`, (error, results, fields) => {
-      connection.query(`SELECT * FROM links WHERE code = '${code}'`, (error, results, fields) => {
+    db.all(`INSERT INTO links(date_created, og_url, short_url, code) VALUES ('${moment().format('YYYY-MM-DD HH:mm:ss Z')}', '${req.query.url}', '${config.url}/${code}', '${code}')`, (error, results) => {
+      db.all(`SELECT * FROM links WHERE code = '${code}'`, (error, results) => {
         if (!results) {
           res.send({message: "Could not shorten URL ❌", code: 500})
         } else if (results.length > 0) {
@@ -55,7 +54,7 @@ app.get('/create', (req, res) => {
 
 app.get('/:code', (req, res) => {
   let code = req.params.code;
-  connection.query(`SELECT * FROM links WHERE code = '${code}'`, (error, results, fields) => {
+  db.all(`SELECT * FROM links WHERE code = '${code}'`, (error, results) => {
     if (results.length > 0) {
       res.redirect(results[0].og_url);
     } else {
