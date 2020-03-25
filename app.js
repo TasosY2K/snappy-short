@@ -48,7 +48,7 @@ app.get('/api', (req, res) => {
         if (!results) {
           res.send({message: 'Could not shorten URL ❌', code: 500})
         } else if (results.length > 0) {
-          console.log(`${moment().format('YYYY-MM-DD HH:mm:ss')} | ${req.ip} | Short-link created | ${results[0].id}`);
+          console.log(`${moment().format('YYYY-MM-DD HH:mm:ss')} | ${req.ip} | Short-link created | ${results[0].id} | ${results[0].og_url}`);
           res.send({message: 'URL shortened successfuly ✔️', id: results[0].id, original: results[0].og_url, short: results[0].short_url, code: 200});
         }
       });
@@ -60,7 +60,7 @@ app.get('/:code', (req, res) => {
   let code = req.params.code;
   db.all(`SELECT * FROM links WHERE code = '${code}'`, (error, results) => {
     if (results.length > 0) {
-      console.log(`${moment().format('YYYY-MM-DD HH:mm:ss')} | ${req.ip} | Redirect | ${results[0].og_url}`);
+      console.log(`${moment().format('YYYY-MM-DD HH:mm:ss')} | ${req.ip} | Redirect | ${results[0].id} | ${results[0].og_url}`);
       res.redirect(results[0].og_url);
     } else {
       res.redirect('/');

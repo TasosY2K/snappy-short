@@ -105,7 +105,7 @@ dist/
 .fusebox/
 
 # SQLite databases
-.db/
+links.db
 
 # DynamoDB Local files
 *.dynamodb/
