@@ -108,7 +108,7 @@ dist/
 .db/
 
 # DynamoDB Local files
-.dynamodb/
+*.dynamodb/
 
 # Temporary folders
 tmp/
