@@ -3,7 +3,7 @@
 Snappy Short is a link shortener built on Express.js utilizing SQLite3  
 Simple but fast and reliable 💨💪
 
-![screenshot](https://media.discordapp.net/attachments/609854271810306049/653322876824322049/Screenshot_1.png?width=1027&height=467)
+![Screenshot_1](https://user-images.githubusercontent.com/29873078/77546483-9f0fc180-6eb4-11ea-9168-df7dfb5b1ec6.png)
 
 # Run it yourself
 
@@ -36,7 +36,7 @@ And place you `server key` and `server certificate` with the name `server.key` a
 ```
 
 **Step 4**  
-Run `app.js` and navigate to your sites domain
+Run `app.js` and navigate to your site
 ```sh
 $ npm start
 ```
