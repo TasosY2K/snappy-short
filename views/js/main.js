@@ -1,7 +1,7 @@
 let linkCount = 1;
 
 function createLink() {
-  $.get(`/create?url=${$("#url-input").val()}`, (data, status) => {
+  $.get(`/api?url=${$("#url-input").val()}`, (data, status) => {
     linkCount++;
     $('#linkCount > span').html(parseInt($('#linkCount > span').html()) + 1);
     $('#message').html(data.message);

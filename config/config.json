@@ -1,0 +1,6 @@
+{
+  "url" : "http://yoursite",
+  "port" : "80",
+  "SSLport" :  "443",
+  "enableSSL" : "false"
+}

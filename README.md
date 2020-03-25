@@ -14,7 +14,7 @@ $ git clone -b SQLite --single-branch https://github.com/TasosY2K/snappy-short.g
 $ npm install
 ```
 **Step 2**  
-Open `config.json` and insert the your sites domain name
+Open `config.json` and insert the your domain name
 ```sh
 {
   "url" : "http://yoursite"
@@ -23,12 +23,11 @@ Open `config.json` and insert the your sites domain name
  **Step 3**  
  Run `app.js` and navigate to your sites domain
  ```sh
- $ node app.js
- $ Serving on port 80
+ $ npm start
  ```
 
 That's it
 
 ## Live demo
 
-[https://snpy.glitch.me](https://snpy.glitch.me)
+[https://snpy.xyz](https://snpy.xyz)
