@@ -30,7 +30,7 @@ If you want SSL enabled create a folder in `/congig` named `/certificates`
 ```sh
 $ mkdir certificates
 ```
-And place you `server key` and `server certificate` with the name `server.key` and `server.cert` ,after that you can enable SSL by editing `config.json`
+And place you `server key` and `server certificate` with the name `server.key` and `server.cert`, after that you can enable SSL by editing `config.json`
 ```json
   "enableSSL" : "false"
 ```
